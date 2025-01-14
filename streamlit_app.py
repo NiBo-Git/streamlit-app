@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+from io import StringIO
+import numpy as np
+import pandas as pd
 
 
 st.title("new app")
@@ -9,10 +12,8 @@ st.write(
 
 uploaded_file = st.file_uploader("Choose a file")
 
-#read excel
-
-if uploaded_file:
-    df1=pd.read_excel(uploaded_file)
-    print(df1)
-else:
-    print("Empty")
+if uploaded_file is not None:
+    # Can be used wherever a "file-like" object is accepted:
+    df = pd.read_excel(uploaded_file)
+    #st.write(df)
+    st.table(df)
